@@ -3,26 +3,26 @@ import java.util.List;
 
 class Lexer{
 	private final String input;
-	private int pos = 0;
+	private int position = 0;
 	
 	public Lexer(String input){
 		this.input = input;
 	}
 	public List<Token> tokenize(){
 		List<Token> tokens  = new ArrayList<>();
-		while(pos<input.length()){
-			char curr = input.charAt(pos);
+		while(position<input.length()){
+			char curr = input.charAt(position);
 			if(curr == ' '){
-				pos++;
+				position++;
 				continue;
 			}
 			
 			if(Character.isDigit(curr)||curr=='.'){
 				StringBuilder sb = new StringBuilder();
-				while(pos<input.length()&&(Character.isDigit(curr)||curr=='.')){
+				while(position<input.length()&&(Character.isDigit(curr)||curr=='.')){
 					sb.append(curr);
-					pos++;
-					curr = input.charAt(pos);
+					position++;
+					curr = input.charAt(position);
 				}
 				tokens.add(new Token(TokenType.NUMBER,sb.toString()));
 				continue;
@@ -36,7 +36,7 @@ class Lexer{
 				case ')': tokens.add(new Token(TokenType.RPAREN, ")")); break;
 				default : throw new RuntimeException("Unknwown character " + curr);
 			}
-			pos++;
+			position++;
 		}
 		tokens.add(new Token(TokenType.EOF, ""));
 		return tokens;

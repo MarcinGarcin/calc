@@ -19,10 +19,9 @@ class Lexer{
 			
 			if(Character.isDigit(curr)||curr=='.'){
 				StringBuilder sb = new StringBuilder();
-				while(position<input.length()&&(Character.isDigit(curr)||curr=='.')){
-					sb.append(curr);
+				while(position<input.length()&&(Character.isDigit(input.charAt(position))||input.charAt(position)=='.')){
+					sb.append(input.charAt(position));
 					position++;
-					curr = input.charAt(position);
 				}
 				tokens.add(new Token(TokenType.NUMBER,sb.toString()));
 				continue;

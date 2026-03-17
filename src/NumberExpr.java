@@ -9,4 +9,9 @@ public class NumberExpr implements Expression{
 	public String print(){
 		return value;
 	}
+	
+	@Override
+	public double evaluate(){
+		return Double.parseDouble(value);
+	}
 }

@@ -11,4 +11,15 @@ public class PrefixExpr implements Expression{
 	public String print(){
 		return "(" + operator.name() + " " + value + ")";
 	}
+	
+	@Override
+	public double evaluate(){
+		double number = Double.parseDouble(value);
+		if(operator == TokenType.MINUS){
+			return -1 * number;
+		}
+		else{
+			return number;
+		}
+	}
 }
